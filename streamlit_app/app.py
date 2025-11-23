@@ -116,7 +116,7 @@ with tab1:
         with st.chat_message("assistant"):
             st.markdown(response_text)
         st.session_state.messages.append({"role": "assistant", "content": response_text})
-        st.experimental_rerun() # Rerun to update chat history
+        st.rerun() # Rerun to update chat history
 
     # Display an empty input box if no prompt is loaded
     if 'current_prompt' not in st.session_state:
