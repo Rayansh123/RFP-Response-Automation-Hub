@@ -3,7 +3,10 @@
 import streamlit as st
 import pandas as pd
 import json
-from ibm_watsonx_orchestrate.client import OrchestrateClient
+# Import the core client from the root of the package (where it is currently located)
+from ibm_watsonx_orchestrate import OrchestrateClient 
+# The credentials structure is often a separate import path
+from ibm_watsonx_orchestrate.common.credentials import IBMCloudCredentials
 from ibm_watsonx_orchestrate.common.credentials import IBMCloudCredentials
 from typing import Dict, List
 
