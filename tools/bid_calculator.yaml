@@ -1,0 +1,11 @@
+openapi: 3.0.0
+info:
+  title: Final Bid Calculator Tools
+  version: 1.0.0
+paths: {}
+components:
+  tools:
+    - python_tool: bid_calculator.py  # <--- NEW PYTHON FILE NAME
+      name: BidCalculator  # <--- NEW TOOL NAME
+      display_name: Final Bid Calculator
+      description: Performs full spec matching, pricing calculation, and technical comparison.

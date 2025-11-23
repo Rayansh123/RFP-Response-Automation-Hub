@@ -1,0 +1,5 @@
+# requirements.txt
+ibm-watsonx-orchestrate
+streamlit
+pandas
+openpyxl
