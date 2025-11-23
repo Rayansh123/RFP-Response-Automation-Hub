@@ -3,9 +3,7 @@
 import streamlit as st
 import pandas as pd
 import json
-
-from ibm_watsonx_orchestrate.client.orchestrate_client import OrchestrateClient
-
+from ibm_watsonx_orchestrate.client.client import OrchestrateClient
 from ibm_watsonx_orchestrate.common.credentials import IBMCloudCredentials
 from typing import Dict, List
 
