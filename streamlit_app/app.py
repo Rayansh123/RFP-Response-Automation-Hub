@@ -37,11 +37,6 @@ We propose the following product to meet your requirements:
 | **Material Cost (5000m)** | **${MOCK_CALCULATION_RESULT['material_cost']:,.2f}** |
 | **Total Test Cost** | **${MOCK_CALCULATION_RESULT['total_test_cost']:,.2f}** |
 | **TOTAL FINAL BID PRICE** | **${MOCK_CALCULATION_RESULT['final_bid_price']:,.2f}** |
-
-### Conclusion
-We believe that our proposal offers the best solution to meet your requirements. We look forward to the opportunity to work with you.
-Sincerely,
-[Your Name] | [Your Company]
 """
 
 # --- STREAMLIT FRONTEND ---
@@ -102,13 +97,16 @@ with tab1:
             time.sleep(3) # Simulate API latency and agent processing
 
         # Decide which mocked response to send
-        if "Generate Full Bid" in prompt_input:
-            response_text = MOCK_PROPOSAL_TEXT
-        elif "lighting circuit" in prompt_input:
-            # RAG/Contextual Answer (from Page 37)
+        prompt_lower = prompt_input.lower()
+        
+        if "generate full bid" in prompt_lower or "rfp bid response" in prompt_lower or "calculation results" in prompt_lower:
+            # Main bid generation trigger
+            response_text = MOCK_PROPOSAL_TEXT 
+        elif "lighting circuit" in prompt_lower:
+            # RAG/Contextual Answer
             response_text = "As per the General Specifications (RFP Document Clause 3.10(i) of the uploaded document), each lighting circuit shall not have more than **800 Watt** connected load or more than **10 points**, whichever is less."
-        elif "earth conductor" in prompt_input:
-            # RAG/Contextual Answer (from Page 36)
+        elif "earth conductor" in prompt_lower:
+            # RAG/Contextual Answer
             response_text = "The protective earth conductor must be colored **Yellow/Green** (RFP Document Clause 3.5(v))."
         else:
             response_text = "I'm sorry, I could not complete that workflow. I can only perform bid generation or answer questions about the documentation."
@@ -127,7 +125,7 @@ with tab2:
     
     st.header("1. Problem & Business Value")
     st.markdown("""
-    The core challenge in B2B tendering (e.g., industrial, high-spec components) is the **slow, manual handoff** between **Sales, Technical, and Pricing** teams. This sequential workflow leads to delays, errors, and lost contracts.
+    The core challenge in **B2B tendering** (e.g., industrial, high-spec components) is the **slow, manual handoff** between **Sales, Technical, and Pricing** teams. This sequential workflow leads to delays, errors, and lost contracts.
     """)
     st.info("Goal: To automate this cross-functional bid process and reduce submission time from days to minutes.")
 
